@@ -227,6 +227,121 @@ select.input{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xml
 .chip-btn.active{background:var(--indigo-bg);border-color:#4f46e5;color:#c7d2fe}
 .freq-badge{font-size:10.5px;font-weight:700;color:var(--muted);background:#0b1220;border:1px solid var(--border);border-radius:99px;padding:2px 8px;white-space:nowrap}
 
+
+/* ---------- Indicador sin conexión ---------- */
+#offlinePill{display:inline-flex;align-items:center;gap:6px;background:var(--amber-bg);border:1px solid rgba(245,158,11,.5);color:#fcd34d;font-size:11.5px;font-weight:700;border-radius:99px;padding:6px 12px;margin:0 0 12px}
+
+/* ---------- Plantillas ---------- */
+.tpl-item{display:flex;align-items:center;gap:6px;margin-bottom:8px}
+.tpl-item:last-child{margin-bottom:0}
+.tpl-use{flex:1;display:flex;align-items:center;gap:8px;background:#0b1220;border:1px solid var(--border);border-radius:12px;padding:10px 12px;font-size:13px;font-weight:600;text-align:left;color:var(--text);transition:.15s;min-width:0}
+.tpl-use:active{transform:scale(.98)}
+.tpl-use .tx-amount{margin-left:auto;flex:0 0 auto}
+
+/* ---------- Calendario ---------- */
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
+.cal-head{text-align:center;font-size:10px;color:var(--muted2);font-weight:800;padding:4px 0}
+.cal-cell{background:#0b1220;border:1px solid var(--border);border-radius:8px;min-height:46px;padding:4px;cursor:pointer;text-align:center;transition:.12s}
+.cal-cell:active{transform:scale(.94)}
+.cal-cell.cal-empty{background:transparent;border-color:transparent;cursor:default}
+.cal-cell.cal-today{border-color:var(--indigo);box-shadow:0 0 0 1px var(--indigo) inset}
+.cal-cell.cal-selected{background:var(--indigo-bg);border-color:#4f46e5}
+.cal-daynum{font-size:11px;font-weight:700;color:var(--muted)}
+.cal-today .cal-daynum{color:#c7d2fe}
+.cal-net{font-size:9px;font-weight:800;margin-top:2px;white-space:nowrap;overflow:hidden}
+.cal-net.pos{color:var(--green)}
+.cal-net.neg{color:var(--red)}
+#calHint{margin-top:8px;font-size:12.5px;color:var(--muted)}
+
+/* ---------- Resumen mensual (analítica) ---------- */
+.ms-nav{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px}
+.ms-label{font-size:15px;font-weight:800;text-transform:capitalize;text-align:center;flex:1}
+.ms-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;text-align:center}
+.ms-stat .v{font-size:16px;font-weight:800}
+.ms-stat .l{font-size:10px;color:var(--muted2);text-transform:uppercase;letter-spacing:.4px;margin-top:2px}
+
+/* ---------- Calculadoras (herramientas) ---------- */
+.calc-res{background:#0b1220;border:1px solid var(--border);border-radius:12px;padding:12px;margin-top:12px}
+.calc-res .row{display:flex;justify-content:space-between;align-items:center;padding:6px 0;font-size:13.5px;border-bottom:1px dashed rgba(148,163,184,.15)}
+.calc-res .row:last-child{border-bottom:none}
+.calc-res .row b{color:var(--text)}
+.calc-res .row.total{border-top:1px solid var(--border);margin-top:4px;padding-top:10px}
+.calc-res .row.total b{color:var(--indigo);font-size:16px}
+.rate-pills{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}
+.rate-pills button{padding:6px 12px;border-radius:99px;border:1px solid var(--border);background:#0b1220;color:var(--muted);font-size:12.5px;font-weight:700;cursor:pointer}
+.rate-pills button.active{background:var(--indigo-bg);border-color:#4f46e5;color:#c7d2fe}
+#simCanvas{width:100%;height:180px;display:block;margin-top:12px;background:#0b1220;border:1px solid var(--border);border-radius:12px}
+
+/* ---------- Reporte imprimible ---------- */
+#reportModal .modal{max-width:640px}
+.report-actions{display:flex;gap:10px;margin-top:14px}
+.report-sheet{background:#ffffff;color:#0f172a;border-radius:12px;padding:22px;font-size:13px}
+.report-sheet h2{margin:0 0 2px;font-size:20px;color:#0f172a}
+.report-sheet h3{margin:18px 0 8px;font-size:14px;border-bottom:2px solid #e2e8f0;padding-bottom:4px;color:#0f172a}
+.report-sheet p{margin:2px 0;color:#475569}
+.report-sheet table{width:100%;border-collapse:collapse;margin-top:6px}
+.report-sheet th,.report-sheet td{border:1px solid #cbd5e1;padding:6px 8px;text-align:left;font-size:12px;color:#0f172a}
+.report-sheet th{background:#f1f5f9;font-weight:700}
+.report-sheet .tot{font-weight:800}
+.report-sheet .pos{color:#059669}
+.report-sheet .neg{color:#dc2626}
+.report-meta{color:#64748b;font-size:11px}
+#printArea{display:none}
+@media print{
+  @page{margin:10mm}
+  body.printing > *:not(#printArea){display:none!important}
+  body.printing #printArea{display:block!important}
+  #printArea .report-sheet{box-shadow:none;padding:0;border-radius:0}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+
+
+/* ---------- Consejos inteligentes ---------- */
+.tip-item{display:flex;gap:10px;align-items:flex-start;background:#0b1220;border:1px solid var(--border);border-radius:12px;padding:10px 12px;margin-bottom:8px;font-size:13px;color:var(--text)}
+.tip-item .ti{font-size:18px;flex:0 0 auto}
+.tip-item b{color:#c7d2fe}
+
+/* ---------- Retos de ahorro "No gasto" ---------- */
+.ch-item{background:#0b1220;border:1px solid var(--border);border-radius:14px;padding:12px;margin-bottom:10px}
+.ch-top{display:flex;align-items:center;gap:10px;justify-content:space-between;margin-bottom:8px}
+.ch-name{font-size:14px;font-weight:700}
+.ch-meta{font-size:12px;color:var(--muted);margin-top:4px}
+
+/* ---------- Conversor de monedas ---------- */
+.cv-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;align-items:end;margin-bottom:8px}
+#cvRates{display:none;margin-top:10px;padding-top:10px;border-top:1px dashed rgba(148,163,184,.3)}
+
+/* ---------- Guía interactiva ---------- */
+.guide-emoji{font-size:46px;text-align:center;margin:6px 0 8px}
+.guide-body p{font-size:14px;color:var(--muted);line-height:1.55;text-align:center;margin:0 0 10px}
+.guide-body p b{color:var(--text)}
+.guide-go{text-align:center;margin-bottom:4px}
+.guide-dots{display:flex;gap:6px;justify-content:center;margin:14px 0 12px}
+.guide-dot{width:8px;height:8px;border-radius:50%;background:var(--border);transition:.15s}
+.guide-dot.active{background:var(--indigo);transform:scale(1.25)}
+a.btn{text-decoration:none;color:inherit}
+
+/* ---------- Tema claro ---------- */
+html[data-theme="light"]{
+  --bg:#eef2f7; --card:#ffffff; --card2:#f8fafc; --border:#cbd5e1;
+  --text:#0f172a; --muted:#475569; --muted2:#64748b;
+  --green-bg:rgba(16,185,129,.12); --red-bg:rgba(239,68,68,.10); --indigo-bg:rgba(99,102,241,.10); --amber-bg:rgba(245,158,11,.12);
+}
+html[data-theme="light"] .app-header,html[data-theme="light"] .nav{background:rgba(255,255,255,.92)}
+html[data-theme="light"] .stat-balance{background:linear-gradient(135deg,#ffffff,#eef2ff);border-color:#c7d2fe}
+html[data-theme="light"] .stat-value{color:#0f172a}
+html[data-theme="light"] .input,html[data-theme="light"] .pad-key,html[data-theme="light"] .chip,html[data-theme="light"] .alert-item,
+html[data-theme="light"] .cal-cell,html[data-theme="light"] .tpl-use,html[data-theme="light"] .calc-res,html[data-theme="light"] .icon-btn,
+html[data-theme="light"] .tip-item,html[data-theme="light"] .ch-item,html[data-theme="light"] .tooltip,html[data-theme="light"] #toast,
+html[data-theme="light"] #simCanvas,html[data-theme="light"] .legend-item:hover,html[data-theme="light"] .legend-item.hl,
+html[data-theme="light"] .type-btn,html[data-theme="light"] .chip-btn,html[data-theme="light"] .badge-ghost,html[data-theme="light"] .type-btn{background:#f8fafc;color:var(--text)}
+html[data-theme="light"] .health-bar,html[data-theme="light"] .bar{background:#e2e8f0}
+html[data-theme="light"] .chip-btn{color:#475569}
+html[data-theme="light"] .chip-btn.active{background:var(--indigo-bg);color:#3730a3}
+html[data-theme="light"] .tx-sub,html[data-theme="light"] .goal-meta,html[data-theme="light"] .goal-meta2{color:#64748b}
+html[data-theme="light"] .empty{color:#64748b}
+html[data-theme="light"] input[type=date]::-webkit-calendar-picker-indicator{filter:invert(.3)}
+
 /* ---------- Overlays / Modales ---------- */
 .overlay{position:fixed;inset:0;background:rgba(2,6,23,.74);backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);z-index:60;display:flex;align-items:center;justify-content:center;padding:16px;overflow-y:auto}
 .modal{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);width:100%;max-width:480px;padding:20px;animation:slideUp .25s ease;max-height:88vh;overflow-y:auto}
@@ -303,6 +418,7 @@ select.input{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xml
     </div>
     <button type="button" class="btn btn-primary btn-block" onclick="welcomeSetupPin()">🔐 Establecer PIN de seguridad</button>
     <button type="button" class="btn btn-ghost btn-block" onclick="welcomeSkip()">⏭️ Omitir por ahora</button>
+    <button type="button" class="btn btn-indigo btn-block" onclick="welcomeGuide()">🧭 Ver guía interactiva</button>
     <p class="muted center" style="margin-top:12px;font-size:11.5px">Puedes configurar o cambiar el PIN cuando quieras desde ⚙️ Herramientas.</p>
   </div>
 </div>
@@ -321,6 +437,7 @@ select.input{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xml
   </header>
 
   <main>
+      <div id="offlinePill" class="hidden">📡 Sin conexión — todo funciona en local</div>
 
     <!-- ============ VISTA 1: DASHBOARD ============ -->
     <section id="view-dashboard" class="view active">
@@ -361,6 +478,10 @@ select.input{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xml
       </div>
 
       <div class="card">
+        <div class="card-head"><span>💡 Consejos inteligentes</span><span class="badge badge-indigo">Dinámicos</span></div>
+        <div id="tipsList"></div>
+      </div>
+      <div class="card">
         <div class="card-head"><span>🕒 Últimos movimientos</span><button type="button" class="btn btn-ghost btn-sm" onclick="go('movimientos')">Ver todos →</button></div>
         <div id="recentList"></div>
       </div>
@@ -371,6 +492,19 @@ select.input{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xml
       <div class="view-head">
         <h2 class="view-title">Movimientos</h2>
         <button type="button" class="btn btn-primary btn-sm" onclick="openTxModal()">+ Nuevo</button>
+      </div>
+      <div class="card">
+        <div class="card-head">
+          <span>📋 Plantillas rápidas</span>
+          <button type="button" class="btn btn-primary btn-sm" onclick="openTemplateModal()">+ Nueva</button>
+        </div>
+        <p class="muted" style="margin-bottom:8px">Registra movimientos frecuentes en 1 toque con la fecha de hoy.</p>
+        <div id="tplList" class="tx-list"></div>
+      </div>
+      <div class="card">
+        <div class="card-head"><span>📅 Calendario del mes</span></div>
+        <div id="calGrid" class="cal-grid"></div>
+        <p class="muted" id="calHint">Toca un día para ver sus movimientos.</p>
       </div>
       <div class="card">
         <div class="card-head">
@@ -427,6 +561,14 @@ select.input{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xml
         </div>
         <div id="goalList" class="tx-list"></div>
       </div>
+      <div class="card">
+        <div class="card-head">
+          <span>🎯 Retos "No gasto"</span>
+          <button type="button" class="btn btn-primary btn-sm" onclick="openChallengeModal()">+ Nuevo reto</button>
+        </div>
+        <p class="muted" style="margin-bottom:8px">Ponte retos de días sin gastar (o sin gastar en una categoría) y sigue tu avance.</p>
+        <div id="chList" class="tx-list"></div>
+      </div>
     </section>
 
     <!-- ============ VISTA 4: DEUDAS Y PRÉSTAMOS ============ -->
@@ -457,6 +599,20 @@ select.input{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xml
     <section id="view-analitica" class="view">
       <h2 class="view-title">Analítica</h2>
       <div class="card">
+        <div class="card-head"><span>🏷️ Resumen mensual</span></div>
+        <div class="ms-nav">
+          <button type="button" class="icon-btn" onclick="msNav(-1)" title="Mes anterior">◀</button>
+          <div class="ms-label" id="msLabel"></div>
+          <button type="button" class="icon-btn" onclick="msNav(1)" title="Mes siguiente">▶</button>
+        </div>
+        <div class="ms-stats">
+          <div class="ms-stat"><div class="v green" id="msIncome">$0.00</div><div class="l">Ingresos</div></div>
+          <div class="ms-stat"><div class="v red" id="msExpense">$0.00</div><div class="l">Gastos</div></div>
+          <div class="ms-stat"><div class="v" id="msNet">$0.00</div><div class="l">Neto</div></div>
+        </div>
+        <p class="muted center" id="msRate" style="margin-top:8px"></p>
+      </div>
+      <div class="card">
         <div class="card-head">
           <span>🍩 Gastos por categoría</span>
           <select id="anPeriod" class="input select-inline">
@@ -485,6 +641,11 @@ select.input{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xml
           <span><span class="lg-dot" style="background:#ef4444"></span> Gastos</span>
         </div>
       </div>
+      <div class="card">
+        <div class="card-head"><span>📈 Balance acumulado (6 meses)</span></div>
+        <canvas id="cumCanvas"></canvas>
+        <p class="muted center" style="margin-top:6px">Tu saldo acumulado mes a mes (ingresos − gastos).</p>
+      </div>
     </section>
 
     <!-- ============ VISTA 6: HERRAMIENTAS ============ -->
@@ -503,6 +664,68 @@ select.input{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xml
         <button type="button" class="btn btn-indigo btn-block" onclick="exportCSV()">📊 Exportar a CSV (Excel)</button>
         <button type="button" class="btn btn-ghost btn-block" onclick="loadDemo()">🧪 Cargar datos de ejemplo (demo)</button>
         <p class="muted center" id="storageInfo" style="margin-top:6px"></p>
+      </div>
+      <div class="card">
+        <div class="card-head"><span>📄 Reporte imprimible (PDF)</span></div>
+        <p class="muted" style="margin-bottom:8px">Genera un resumen de tus finanzas listo para imprimir o guardar como PDF (funciona sin internet).</p>
+        <select id="reportPeriod" class="input" style="margin-bottom:10px">
+          <option value="hoy">Hoy</option>
+          <option value="semana">Esta semana</option>
+          <option value="this">Este mes</option>
+          <option value="prev">Mes pasado</option>
+          <option value="ano">Este año</option>
+          <option value="all">Todo</option>
+        </select>
+        <button type="button" class="btn btn-indigo btn-block" onclick="openReport()">📄 Generar reporte</button>
+      </div>
+      <div class="card">
+        <div class="card-head"><span>🧮 Propinas y división de cuenta</span></div>
+        <label class="field-label">Total de la cuenta ($)</label>
+        <input id="tipTotal" type="number" min="0" step="0.01" class="input" value="0">
+        <label class="field-label">Propina (%)</label>
+        <div class="rate-pills" id="tipPills"></div>
+        <label class="field-label">Personas</label>
+        <input id="tipPeople" type="number" min="1" step="1" class="input" value="1">
+        <label class="check"><input type="checkbox" id="tipRound"> Redondear el pago por persona hacia arriba</label>
+        <div class="calc-res" id="tipResult"></div>
+      </div>
+      <div class="card">
+        <div class="card-head"><span>💹 Simulador de ahorro (interés compuesto)</span></div>
+        <label class="field-label">Ahorro inicial ($)</label>
+        <input id="simInitial" type="number" min="0" step="0.01" class="input" value="100">
+        <label class="field-label">Aporte mensual ($)</label>
+        <input id="simMonthly" type="number" min="0" step="0.01" class="input" value="50">
+        <label class="field-label">Interés anual (%)</label>
+        <input id="simRate" type="number" min="0" step="0.1" class="input" value="6">
+        <label class="field-label">Meses</label>
+        <input id="simMonths" type="number" min="1" max="600" step="1" class="input" value="12">
+        <div class="calc-res" id="simResult"></div>
+        <canvas id="simCanvas"></canvas>
+      </div>
+      <div class="card">
+        <div class="card-head"><span>🎨 Apariencia</span></div>
+        <p class="muted" style="margin-bottom:8px">Cambia entre el tema oscuro profesional y el tema claro.</p>
+        <div class="rate-pills" id="themePills"></div>
+      </div>
+      <div class="card">
+        <div class="card-head"><span>💱 Conversor de monedas</span></div>
+        <div class="cv-row">
+          <input id="cvAmount" type="number" min="0" step="0.01" class="input" placeholder="Monto" value="1">
+          <div style="display:flex;gap:8px">
+            <select id="cvFrom" class="input"></select>
+            <select id="cvTo" class="input"></select>
+          </div>
+        </div>
+        <div class="calc-res" id="cvResult"></div>
+        <button type="button" class="btn btn-ghost btn-sm" onclick="toggleCvRates()" style="margin-top:10px">⚙️ Editar tasas de referencia</button>
+        <div id="cvRates"></div>
+        <p class="muted" style="margin-top:6px">Tasas de referencia offline (valor por 1 USD). Ajústalas si lo deseas.</p>
+      </div>
+      <div class="card">
+        <div class="card-head"><span>📘 Tutorial y guía</span></div>
+        <p class="muted" style="margin-bottom:8px">Aprende a usar MiWallet Pro con la guía interactiva o el documento completo.</p>
+        <button type="button" class="btn btn-indigo btn-block" onclick="openGuide()">🧭 Guía interactiva paso a paso</button>
+        <a class="btn btn-indigo btn-block" href="TUTORIAL_MiWallet_Pro.md" target="_blank" rel="noopener">📘 Abrir tutorial completo (documento)</a>
       </div>
       <div class="card danger-zone">
         <div class="card-head"><span>🗑️ Zona de peligro</span></div>
@@ -723,6 +946,97 @@ select.input{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xml
   </div>
 </div>
 
+<!-- ============ MODAL: PLANTILLA RÁPIDA ============ -->
+<div id="templateModal" class="overlay hidden">
+  <div class="modal">
+    <div class="modal-head">
+      <h3 id="templateModalTitle">Nueva plantilla</h3>
+      <button type="button" class="icon-btn" onclick="closeTemplateModal()">✕</button>
+    </div>
+    <form id="templateForm" autocomplete="off">
+      <label class="field-label">Nombre</label>
+      <input id="tplName" type="text" class="input" maxlength="50" placeholder="Ej: Almuerzo, Pasaje, Sueldo" required>
+      <label class="field-label">Tipo</label>
+      <div class="type-grid" id="tplTypeGrid"></div>
+      <label class="field-label">Monto ($ USD)</label>
+      <input id="tplAmount" type="number" min="0.01" step="0.01" class="input" required>
+      <label class="field-label">Categoría</label>
+      <select id="tplCat" class="input"></select>
+      <label class="field-label">Nota (opcional)</label>
+      <input id="tplNote" type="text" class="input" maxlength="120">
+      <div class="btn-row">
+        <button type="button" class="btn btn-ghost" onclick="closeTemplateModal()">Cancelar</button>
+        <button type="submit" class="btn btn-primary">💾 Guardar plantilla</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ============ MODAL: REPORTE IMPRIMIBLE ============ -->
+<div id="reportModal" class="overlay hidden">
+  <div class="modal">
+    <div class="modal-head">
+      <h3>📄 Reporte</h3>
+      <button type="button" class="icon-btn" onclick="closeReport()">✕</button>
+    </div>
+    <div id="reportPreview"></div>
+    <div class="report-actions">
+      <button type="button" class="btn btn-ghost" onclick="closeReport()">Cerrar</button>
+      <button type="button" class="btn btn-primary" onclick="printReport()">🖨️ Imprimir / Guardar PDF</button>
+    </div>
+  </div>
+</div>
+
+<!-- Zona exclusiva de impresión (solo se muestra al imprimir/guardar PDF) -->
+<div id="printArea"></div>
+
+<!-- ============ MODAL: RETO DE AHORRO ============ -->
+<div id="challengeModal" class="overlay hidden">
+  <div class="modal">
+    <div class="modal-head">
+      <h3>Nuevo reto "No gasto"</h3>
+      <button type="button" class="icon-btn" onclick="closeChallengeModal()">✕</button>
+    </div>
+    <form id="challengeForm" autocomplete="off">
+      <label class="field-label">Nombre (opcional)</label>
+      <input id="chName" type="text" class="input" maxlength="50" placeholder="Ej: Reto semana sin ocio">
+      <label class="field-label">¿Qué no gastar?</label>
+      <select id="chCat" class="input"></select>
+      <label class="field-label">Duración</label>
+      <select id="chDays" class="input">
+        <option value="1">1 día</option>
+        <option value="3">3 días</option>
+        <option value="7" selected>7 días</option>
+        <option value="14">14 días</option>
+        <option value="30">30 días</option>
+      </select>
+      <div class="btn-row">
+        <button type="button" class="btn btn-ghost" onclick="closeChallengeModal()">Cancelar</button>
+        <button type="submit" class="btn btn-primary">🚀 Empezar reto</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ============ MODAL: GUÍA INTERACTIVA ============ -->
+<div id="guideModal" class="overlay hidden">
+  <div class="modal">
+    <div class="modal-head">
+      <h3 id="guideTitle">🧭 Guía rápida</h3>
+      <button type="button" class="icon-btn" onclick="closeGuide()">✕</button>
+    </div>
+    <div class="guide-emoji" id="guideEmoji">🏠</div>
+    <div class="guide-body" id="guideText"></div>
+    <div class="guide-go" id="guideGo"></div>
+    <div class="guide-dots" id="guideDots"></div>
+    <div class="btn-row">
+      <button type="button" class="btn btn-ghost" onclick="closeGuide()">Cerrar</button>
+      <button type="button" class="btn btn-ghost" id="guidePrev" onclick="guideNav(-1)">◀ Anterior</button>
+      <button type="button" class="btn btn-primary" id="guideNext" onclick="guideNav(1)">Siguiente ▶</button>
+    </div>
+  </div>
+</div>
+
 <!-- ============ MODAL: PIN GENÉRICO ============ -->
 <div id="pinModal" class="overlay hidden">
   <div class="modal modal-center">
@@ -781,6 +1095,7 @@ const DASH_PERIODS = [
   { id:'all',    label:'Todo' }
 ];
 const REC_FREQS = ['diario','laboral','semanal','quincenal','mensual','anual'];
+const APP_VERSION = '2.3';
 const locale = (()=>{ try { new Date().toLocaleDateString('es-SV'); return 'es-SV'; } catch(e){ return 'es'; } })();
 
 /* ============ ESTADO GLOBAL ============ */
@@ -799,6 +1114,14 @@ let anPeriod = 'this';
 let dashPeriod = (DB.settings && DB.settings.dashPeriod) || 'this';
 let currentRecType = 'gasto';
 let editingRecId = null;
+let currentTplType = 'gasto';
+let editingTemplateId = null;
+let selectedDay = null;
+let analMonthOffset = 0;
+let tipPct = 15;
+let guideStep = 0;
+let cvFrom = 'USD';
+let cvTo = 'EUR';
 const filterState = { q:'', type:'all', cat:'all', range:'this', sort:'date_desc' };
 let donutSlices = [];
 let donutTotal = 0;
@@ -971,7 +1294,7 @@ function fmtAxis(v){
 
 /* ============ ALMACENAMIENTO (localStorage robusto) ============ */
 function defaultDB(){
-  return { settings:{ pin:null, pinSkipped:false, dashPeriod:'this' }, transactions:[], budgets:{}, goals:[], debts:[], recurring:[] };
+  return { settings:{ pin:null, pinSkipped:false, dashPeriod:'this', theme:'dark', rates:{} }, transactions:[], budgets:{}, goals:[], debts:[], recurring:[], templates:[], challenges:[] };
 }
 function validTxn(t){
   return t && typeof t === 'object'
@@ -997,6 +1320,10 @@ function normalizeDB(data){
     if (typeof data.settings.pin === 'string' && /^\d{4}$/.test(data.settings.pin)) d.settings.pin = data.settings.pin;
     if (data.settings.pinSkipped === true) d.settings.pinSkipped = true;
     if (['hoy','semana','this','prev','ano','all'].indexOf(data.settings.dashPeriod) >= 0) d.settings.dashPeriod = data.settings.dashPeriod;
+    if (data.settings.theme === 'light' || data.settings.theme === 'dark') d.settings.theme = data.settings.theme;
+    if (data.settings.rates && typeof data.settings.rates === 'object') {
+      Object.entries(data.settings.rates).forEach(([c, v]) => { if (DEFAULT_RATES[c] && Number(v) > 0) d.settings.rates[c] = Number(v); });
+    }
   }
   d.transactions = Array.isArray(data.transactions) ? data.transactions.filter(validTxn) : [];
   if (data.budgets && typeof data.budgets === 'object') {
@@ -1014,6 +1341,21 @@ function normalizeDB(data){
     dueDate: x.dueDate, status: x.status === 'pagado' ? 'pagado' : 'pendiente', paidDate: x.paidDate || null
   })) : [];
   d.recurring = Array.isArray(data.recurring) ? data.recurring.map(normalizeRec).filter(Boolean) : [];
+  d.templates = Array.isArray(data.templates)
+    ? data.templates.filter(tpl => tpl && typeof tpl === 'object' && typeof tpl.name === 'string' && tpl.name.trim()
+        && TYPE_META.some(t => t.id === tpl.type) && Number(tpl.amount) > 0 && isFinite(tpl.amount)
+        && CATEGORIES.some(c => c.id === tpl.category))
+      .map(tpl => ({ id: tpl.id || uid(), name: String(tpl.name).slice(0, 50), type: tpl.type,
+        amount: Math.round(Number(tpl.amount) * 100) / 100, category: tpl.category,
+        note: tpl.note ? String(tpl.note).slice(0, 120) : '' }))
+    : [];
+  d.challenges = Array.isArray(data.challenges)
+    ? data.challenges.filter(c => c && typeof c === 'object' && typeof c.name === 'string' && c.name.trim()
+        && (c.category === 'all' || CATEGORIES.some(x => x.id === c.category))
+        && Number(c.days) > 0 && typeof c.startDate === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(c.startDate))
+      .map(c => ({ id: c.id || uid(), name: String(c.name).slice(0, 50), category: c.category,
+        days: Math.min(365, Math.max(1, Math.round(Number(c.days)))), startDate: c.startDate }))
+    : [];
   return d;
 }
 function normalizeRec(r){
@@ -1106,10 +1448,14 @@ function go(view){
 /* ============ RENDER GENERAL ============ */
 function renderAll(){
   renderDashboard();
+  renderTips();
   renderMovimientos();
+  renderTemplates();
+  renderCalendar();
   renderRecurrentes();
   renderPresupuestos();
   renderMetas();
+  renderChallenges();
   renderDebts();
   renderAnalytics();
   renderTools();
@@ -1278,6 +1624,7 @@ function txRowHTML(t){
 function renderMovimientos(){
   const F = filterState;
   let list = DB.transactions.slice();
+  if (selectedDay) list = list.filter(t => (t.date || '').slice(0, 10) === selectedDay);
   const q = F.q.trim().toLowerCase();
   if (q) list = list.filter(t => (t.note || '').toLowerCase().includes(q) || catName(t.category).toLowerCase().includes(q));
   if (F.type !== 'all') list = list.filter(t => t.type === F.type);
@@ -1291,10 +1638,12 @@ function renderMovimientos(){
   };
   list.sort(sorters[F.sort] || sorters.date_desc);
   const total = list.reduce((s, t) => s + signedAmount(t), 0);
-  $('#mvSummary').innerHTML = list.length
+  let dayChip = '';
+  if (selectedDay) dayChip = '<span class="chip">📌 ' + fmtDateOnly(selectedDay) + ' <button type="button" onclick="selectDay(null)" style="background:none;border:none;color:#fca5a5;font-weight:800;cursor:pointer;font-size:12px" title="Quitar filtro de día">✕</button></span>';
+  $('#mvSummary').innerHTML = dayChip + (list.length
     ? '<span class="chip">' + list.length + ' movimiento' + (list.length === 1 ? '' : 's') + '</span>'
       + '<span class="chip">Total: <b class="' + (total >= 0 ? 'green' : 'red') + '">' + fmtM(total) + '</b></span>'
-    : '';
+    : '');
   $('#mvList').innerHTML = list.length
     ? list.map(txRowHTML).join('')
     : emptyHTML('💸', 'No hay movimientos con estos filtros.');
@@ -1799,7 +2148,7 @@ function expensesByCat(range){
   });
   return Object.entries(map).map(([cat, val]) => ({ cat, val })).sort((a, b) => b.val - a.val);
 }
-function renderAnalytics(){ drawCharts(); }
+function renderAnalytics(){ drawCharts(); renderMonthSummary(); }
 
 /* ============ GRÁFICO DE DONA (Canvas 2D puro) ============ */
 function paintDonut(canvas){
@@ -1972,6 +2321,7 @@ function drawCharts(){
   if (!$('#view-analitica').classList.contains('active')) return;
   drawDonut();
   drawBars();
+  drawCum();
 }
 
 /* ============ HERRAMIENTAS: RESPALDOS ============ */
@@ -2162,6 +2512,7 @@ function removePin(){
 }
 
 function renderTools(){
+  renderThemePills();
   const has = !!DB.settings.pin;
   $('#pinStatus').innerHTML = has
     ? 'PIN activo: <b>' + DB.settings.pin.replace(/./g, '•') + '</b> — la app pedirá tu PIN cada vez que se abra.'
@@ -2175,8 +2526,587 @@ function renderTools(){
   try { bytes = (localStorage.getItem(STORE_KEY) || '').length; } catch(e){ bytes = JSON.stringify(DB).length; }
   $('#storageInfo').textContent = storageBlocked
     ? '⚠️ Almacenamiento no disponible en esta vista: los datos solo se conservan en memoria (abre el archivo con doble clic para persistencia real).'
-    : 'Datos locales en uso: ' + (bytes / 1024).toFixed(2) + ' KB · almacenados solo en este dispositivo';
+    : 'Datos locales en uso: ' + (bytes / 1024).toFixed(2) + ' KB · v' + APP_VERSION + ' · almacenados solo en este dispositivo';
 }
+
+/* ============ PLANTILLAS RÁPIDAS ============ */
+function buildTplTypeGrid(){
+  const g = $('#tplTypeGrid');
+  g.innerHTML = '';
+  TYPE_META.forEach(t => {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'type-btn' + (t.id === currentTplType ? ' active' : '') + ' type-' + t.id;
+    b.innerHTML = '<span class="type-ic">' + t.icon + '</span><span class="type-lb">' + t.name + '</span>';
+    b.onclick = () => { currentTplType = t.id; buildTplTypeGrid(); };
+    g.appendChild(b);
+  });
+}
+function renderTemplates(){
+  const list = DB.templates;
+  $('#tplList').innerHTML = list.length
+    ? list.map(tpl => {
+        const signCls = tpl.type === 'gasto' ? 'neg' : tpl.type === 'ingreso' ? 'pos' : 'neu';
+        const icon = tpl.type === 'gasto' ? '💸' : tpl.type === 'ingreso' ? '💰' : tpl.type === 'ahorro' ? '🐷' : '🔄';
+        return '<div class="tpl-item">'
+          + '<button type="button" class="tpl-use" onclick="useTemplate(\'' + tpl.id + '\')" title="Añadir hoy">'
+          + icon + ' <span style="flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">' + esc(tpl.name) + '</span>'
+          + ' <span class="tx-amount ' + signCls + '">' + fmtM(tpl.amount) + '</span>'
+          + '</button>'
+          + '<button type="button" class="icon-btn sm" onclick="editTemplate(\'' + tpl.id + '\')" title="Editar">✏️</button>'
+          + '<button type="button" class="icon-btn sm" onclick="deleteTemplate(\'' + tpl.id + '\')" title="Eliminar">🗑️</button>'
+          + '</div>';
+      }).join('')
+    : emptyHTML('📋', 'Crea plantillas para registrar movimientos frecuentes en 1 toque.');
+}
+function openTemplateModal(id){
+  editingTemplateId = id || null;
+  const tpl = editingTemplateId ? DB.templates.find(x => x.id === editingTemplateId) : null;
+  $('#templateModalTitle').textContent = tpl ? '✏️ Editar plantilla' : 'Nueva plantilla';
+  currentTplType = tpl ? tpl.type : 'gasto';
+  buildTplTypeGrid();
+  $('#tplName').value = tpl ? tpl.name : '';
+  $('#tplAmount').value = tpl ? tpl.amount : '';
+  $('#tplCat').value = tpl ? tpl.category : 'comida';
+  $('#tplNote').value = tpl ? tpl.note : '';
+  show('templateModal');
+  setTimeout(() => $('#tplName').focus(), 60);
+}
+function closeTemplateModal(){ hide('templateModal'); editingTemplateId = null; }
+$('#templateForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  const name = $('#tplName').value.trim();
+  const amount = parseFloat($('#tplAmount').value);
+  if (!name) { toast('⚠️ Ponle un nombre a la plantilla.', 'error'); return; }
+  if (!(amount > 0)) { toast('⚠️ El monto debe ser mayor a 0.', 'error'); return; }
+  const data = { name: name, type: currentTplType, amount: Math.round(amount * 100) / 100, category: $('#tplCat').value, note: $('#tplNote').value.trim() };
+  if (editingTemplateId){
+    const t = DB.templates.find(x => x.id === editingTemplateId);
+    if (t) Object.assign(t, data);
+  } else {
+    DB.templates.push(Object.assign({ id: uid() }, data));
+  }
+  if (saveDB()) { closeTemplateModal(); renderTemplates(); toast('✅ Plantilla guardada'); }
+});
+function editTemplate(id){ openTemplateModal(id); }
+function deleteTemplate(id){
+  const t = DB.templates.find(x => x.id === id);
+  if (!t) return;
+  if (!confirm('¿Eliminar la plantilla "' + t.name + '"?')) return;
+  DB.templates = DB.templates.filter(x => x.id !== id);
+  if (saveDB()) { renderTemplates(); toast('🗑️ Plantilla eliminada'); }
+}
+function useTemplate(id){
+  const tpl = DB.templates.find(x => x.id === id);
+  if (!tpl) return;
+  DB.transactions.push({ id: uid(), type: tpl.type, amount: tpl.amount, category: tpl.category, date: nowInput(), note: tpl.note || tpl.name, recurring: false, goalId: null });
+  if (saveDB()) { renderAll(); toast('✅ Añadido hoy: ' + tpl.name); }
+}
+
+/* ============ CALENDARIO MENSUAL ============ */
+function renderCalendar(){
+  const now = new Date();
+  const y = now.getFullYear(), m = now.getMonth();
+  const dim = daysInMonth(y, m);
+  const startDow = ((new Date(y, m, 1)).getDay() + 6) % 7; /* lunes = 0 */
+  const p = n => String(n).padStart(2, '0');
+  const dayNet = {};
+  DB.transactions.forEach(t => {
+    const d = new Date(t.date);
+    if (d.getFullYear() === y && d.getMonth() === m){
+      const k = d.getDate();
+      dayNet[k] = (dayNet[k] || 0) + signedAmount(t);
+    }
+  });
+  let html = '<div class="cal-head">L</div><div class="cal-head">M</div><div class="cal-head">X</div><div class="cal-head">J</div><div class="cal-head">V</div><div class="cal-head">S</div><div class="cal-head">D</div>';
+  for (let i = 0; i < startDow; i++) html += '<div class="cal-cell cal-empty"></div>';
+  for (let day = 1; day <= dim; day++){
+    const iso = y + '-' + p(m + 1) + '-' + p(day);
+    const today = day === now.getDate();
+    const sel = selectedDay === iso;
+    const net = dayNet[day];
+    html += '<div class="cal-cell' + (today ? ' cal-today' : '') + (sel ? ' cal-selected' : '') + '" onclick="selectDay(\'' + iso + '\')">'
+      + '<div class="cal-daynum">' + day + '</div>'
+      + (net !== undefined ? '<div class="cal-net ' + (net >= 0 ? 'pos' : 'neg') + '">' + fmtM(net) + '</div>' : '')
+      + '</div>';
+  }
+  $('#calGrid').innerHTML = html;
+  $('#calHint').innerHTML = selectedDay
+    ? 'Mostrando movimientos del <b>' + fmtDateOnly(selectedDay) + '</b> · <button type="button" class="btn btn-ghost btn-sm" onclick="selectDay(null)">Ver todos</button>'
+    : 'Toca un día para ver sus movimientos en la lista.';
+}
+function selectDay(iso){
+  selectedDay = (selectedDay === iso) ? null : iso;
+  renderCalendar();
+  renderMovimientos();
+}
+
+/* ============ RESUMEN MENSUAL (analítica) ============ */
+function msNav(delta){
+  analMonthOffset += delta;
+  if (analMonthOffset > 0) analMonthOffset = 0;
+  if (analMonthOffset < -120) analMonthOffset = -120;
+  renderMonthSummary();
+}
+function renderMonthSummary(){
+  const now = new Date();
+  const d = new Date(now.getFullYear(), now.getMonth() + analMonthOffset, 1);
+  const key = monthKey(toInput(d, false));
+  let inc = 0, exp = 0, n = 0;
+  DB.transactions.forEach(t => {
+    if (monthKey(t.date) !== key) return;
+    n++;
+    if (t.type === 'ingreso') inc += t.amount;
+    else if (t.type === 'gasto') exp += t.amount;
+  });
+  $('#msLabel').textContent = d.toLocaleDateString(locale, { month: 'long', year: 'numeric' });
+  $('#msIncome').textContent = fmtM(inc);
+  $('#msExpense').textContent = fmtM(exp);
+  const net = inc - exp;
+  const netEl = $('#msNet');
+  netEl.textContent = fmtM(net);
+  netEl.className = 'v ' + (net >= 0 ? 'green' : 'red');
+  const rate = inc > 0 ? Math.round((inc - exp) / inc * 100) : null;
+  $('#msRate').textContent = n
+    ? (rate !== null ? 'Tasa de ahorro del mes: ' + rate + '% · ' + n + ' movimientos' : n + ' movimientos en el mes')
+    : 'Sin movimientos en este mes.';
+}
+
+/* ============ CALCULADORA DE PROPINAS Y DIVISIÓN ============ */
+function buildTipPills(){
+  $('#tipPills').innerHTML = [10, 15, 18, 20].map(p =>
+    '<button type="button" class="' + (tipPct === p ? 'active' : '') + '" onclick="setTipPct(' + p + ')">' + p + '%</button>'
+  ).join('');
+}
+function setTipPct(p){ tipPct = p; buildTipPills(); calcTip(); }
+function calcTip(){
+  const total = parseFloat($('#tipTotal').value) || 0;
+  const people = Math.max(1, parseInt($('#tipPeople').value, 10) || 1);
+  const roundUp = $('#tipRound').checked;
+  const tip = total * tipPct / 100;
+  const grand = total + tip;
+  let perPerson = grand / people;
+  const perTip = tip / people;
+  if (roundUp) perPerson = Math.ceil(perPerson);
+  $('#tipResult').innerHTML =
+      '<div class="row"><span>Propina (' + tipPct + '%)</span><b class="pos">+' + fmtM(tip) + '</b></div>'
+    + '<div class="row"><span>Total con propina</span><b>' + fmtM(grand) + '</b></div>'
+    + '<div class="row"><span>Propina por persona</span><b>' + fmtM(perTip) + '</b></div>'
+    + '<div class="row total"><span>Por persona (' + people + ')</span><b>' + fmtM(perPerson) + '</b></div>';
+}
+
+/* ============ SIMULADOR DE AHORRO (INTERÉS COMPUESTO) ============ */
+function simInterest(){
+  const initial = parseFloat($('#simInitial').value) || 0;
+  const monthly = parseFloat($('#simMonthly').value) || 0;
+  const rate = parseFloat($('#simRate').value) || 0;
+  const months = Math.min(600, Math.max(1, parseInt($('#simMonths').value, 10) || 1));
+  let bal = initial, invested = initial;
+  const series = [bal];
+  for (let i = 0; i < months; i++){
+    invested += monthly;
+    bal = (bal + monthly) * (1 + rate / 100 / 12);
+    series.push(bal);
+  }
+  const interest = bal - invested;
+  $('#simResult').innerHTML =
+      '<div class="row"><span>Invertido total</span><b>' + fmtM(invested) + '</b></div>'
+    + '<div class="row"><span>Interés generado</span><b class="pos">+' + fmtM(interest) + '</b></div>'
+    + '<div class="row total"><span>Balance final (' + months + ' meses)</span><b>' + fmtM(bal) + '</b></div>';
+  drawSimChart(series);
+}
+function drawSimChart(series){
+  const canvas = $('#simCanvas');
+  if (!canvas || canvas.offsetParent === null) return;
+  const dpr = window.devicePixelRatio || 1;
+  const w = canvas.clientWidth, h = canvas.clientHeight;
+  canvas.width = Math.round(w * dpr);
+  canvas.height = Math.round(h * dpr);
+  const ctx = canvas.getContext('2d');
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  ctx.clearRect(0, 0, w, h);
+  const padL = 46, padR = 12, padT = 12, padB = 22;
+  const pw = w - padL - padR, ph = h - padT - padB;
+  const maxV = niceCeil(Math.max.apply(null, [1].concat(series)));
+  const yOf = v => padT + ph - (v / maxV) * ph;
+  ctx.font = '10px system-ui';
+  ctx.textAlign = 'right';
+  ctx.textBaseline = 'middle';
+  for (let i = 0; i <= 4; i++){
+    const v = maxV * i / 4;
+    ctx.strokeStyle = 'rgba(148,163,184,.14)';
+    ctx.beginPath();
+    ctx.moveTo(padL, yOf(v));
+    ctx.lineTo(w - padR, yOf(v));
+    ctx.stroke();
+    ctx.fillStyle = '#64748b';
+    ctx.fillText('$' + fmtAxis(v), padL - 6, yOf(v));
+  }
+  if (series.length < 2) return;
+  const step = pw / (series.length - 1);
+  ctx.beginPath();
+  series.forEach((v, i) => {
+    const x = padL + i * step, y = yOf(v);
+    if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+  });
+  ctx.strokeStyle = '#6366f1';
+  ctx.lineWidth = 2;
+  ctx.stroke();
+  ctx.lineTo(padL + (series.length - 1) * step, padT + ph);
+  ctx.lineTo(padL, padT + ph);
+  ctx.closePath();
+  ctx.fillStyle = 'rgba(99,102,241,.15)';
+  ctx.fill();
+  const lx = padL + (series.length - 1) * step, ly = yOf(series[series.length - 1]);
+  ctx.beginPath();
+  ctx.arc(lx, ly, 3, 0, Math.PI * 2);
+  ctx.fillStyle = '#6366f1';
+  ctx.fill();
+  ctx.fillStyle = '#94a3b8';
+  ctx.font = '10px system-ui';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'top';
+  ctx.fillText('inicio', padL, h - padB + 4);
+  ctx.fillText('mes ' + series.length, lx, h - padB + 4);
+}
+
+/* ============ REPORTE IMPRIMIBLE (PDF) ============ */
+function buildReportHTML(p){
+  const list = DB.transactions.filter(t => keyInRange(t.date, p)).slice().sort((a, b) => new Date(b.date) - new Date(a.date));
+  let inc = 0, exp = 0;
+  list.forEach(t => { if (t.type === 'ingreso') inc += t.amount; else if (t.type === 'gasto') exp += t.amount; });
+  const byCat = {};
+  list.forEach(t => { if (t.type === 'gasto') byCat[t.category] = (byCat[t.category] || 0) + t.amount; });
+  const catRows = Object.entries(byCat).sort((a, b) => b[1] - a[1]);
+  const totalCat = catRows.reduce((s, r) => s + r[1], 0);
+  const nowS = new Date().toLocaleDateString(locale, { day: '2-digit', month: 'long', year: 'numeric' });
+  const lbl = periodLabel(p).charAt(0).toUpperCase() + periodLabel(p).slice(1);
+  let h = '<div class="report-sheet">'
+    + '<h2>💼 MiWallet Pro</h2>'
+    + '<p>Reporte financiero · ' + lbl + '</p>'
+    + '<p class="report-meta">Generado el ' + nowS + ' · ' + list.length + ' movimientos</p>'
+    + '<h3>Resumen</h3>'
+    + '<table><tr><th>Concepto</th><th style="text-align:right">Monto</th></tr>'
+    + '<tr><td>Ingresos</td><td class="pos" style="text-align:right">' + fmtM(inc) + '</td></tr>'
+    + '<tr><td>Gastos</td><td class="neg" style="text-align:right">' + fmtM(exp) + '</td></tr>'
+    + '<tr><td class="tot">Balance neto</td><td class="tot ' + (inc - exp >= 0 ? 'pos' : 'neg') + '" style="text-align:right">' + fmtM(inc - exp) + '</td></tr>'
+    + '</table>';
+  h += '<h3>Gastos por categoría</h3>';
+  h += catRows.length
+    ? '<table><tr><th>Categoría</th><th style="text-align:right">Monto</th><th style="text-align:right">%</th></tr>'
+      + catRows.map(r => '<tr><td>' + catIcon(r[0]) + ' ' + esc(catName(r[0])) + '</td><td style="text-align:right">' + fmtM(r[1]) + '</td><td style="text-align:right">' + Math.round(r[1] / totalCat * 100) + '%</td></tr>').join('')
+      + '<tr><td class="tot">Total</td><td class="tot" style="text-align:right">' + fmtM(totalCat) + '</td><td></td></tr></table>'
+    : '<p>Sin gastos en el período.</p>';
+  h += '<h3>Movimientos</h3>';
+  h += list.length
+    ? '<table><tr><th>Fecha</th><th>Tipo</th><th>Categoría</th><th>Nota</th><th style="text-align:right">Monto</th></tr>'
+      + list.map(t => '<tr><td>' + fmtDate(t.date) + '</td><td>' + typeName(t.type) + '</td><td>' + esc(catName(t.category)) + '</td><td>' + esc(t.note || '—') + '</td><td class="' + (t.type === 'gasto' ? 'neg' : 'pos') + '" style="text-align:right">' + fmtM(t.amount) + '</td></tr>').join('')
+      + '</table>'
+    : '<p>Sin movimientos en el período.</p>';
+  h += '<h3>Presupuestos del mes</h3>';
+  const km = currentMonthKey();
+  const bEntries = Object.entries(DB.budgets || {});
+  h += bEntries.length
+    ? '<table><tr><th>Categoría</th><th style="text-align:right">Límite</th><th style="text-align:right">Gastado</th><th style="text-align:right">Restante</th></tr>'
+      + bEntries.map(([cat, lim]) => {
+          const sp = DB.transactions.reduce((s, t) => (monthKey(t.date) === km && t.type === 'gasto' && t.category === cat) ? s + t.amount : s, 0);
+          return '<tr><td>' + esc(catName(cat)) + '</td><td style="text-align:right">' + fmtM(lim) + '</td><td style="text-align:right">' + fmtM(sp) + '</td><td style="text-align:right">' + fmtM(lim - sp) + '</td></tr>';
+        }).join('') + '</table>'
+    : '<p>Sin presupuestos definidos.</p>';
+  h += '<h3>Metas de ahorro</h3>';
+  h += DB.goals.length
+    ? '<table><tr><th>Meta</th><th style="text-align:right">Progreso</th><th style="text-align:right">Objetivo</th><th style="text-align:right">%</th></tr>'
+      + DB.goals.map(g => '<tr><td>' + (g.emoji || '🎯') + ' ' + esc(g.name) + '</td><td style="text-align:right">' + fmtM(g.current) + '</td><td style="text-align:right">' + fmtM(g.target) + '</td><td style="text-align:right">' + Math.round(g.target > 0 ? g.current / g.target * 100 : 0) + '%</td></tr>').join('') + '</table>'
+    : '<p>Sin metas.</p>';
+  const pend = DB.debts.filter(d => d.status === 'pendiente');
+  h += '<h3>Deudas pendientes</h3>';
+  h += pend.length
+    ? '<table><tr><th>Dirección</th><th>Persona</th><th>Concepto</th><th style="text-align:right">Monto</th><th>Vence</th></tr>'
+      + pend.map(d => '<tr><td>' + (d.direction === 'owe' ? 'Debo a' : 'Me deben') + '</td><td>' + esc(d.person) + '</td><td>' + esc(d.concept || '—') + '</td><td style="text-align:right">' + fmtM(d.amount) + '</td><td>' + fmtDateOnly(d.dueDate) + '</td></tr>').join('') + '</table>'
+    : '<p>Sin deudas pendientes. 🎉</p>';
+  h += '<p class="report-meta" style="margin-top:16px">MiWallet Pro v' + APP_VERSION + ' · datos locales · generado sin conexión</p></div>';
+  return h;
+}
+function openReport(){
+  const html = buildReportHTML($('#reportPeriod').value);
+  $('#reportPreview').innerHTML = html;
+  $('#printArea').innerHTML = html;
+  show('reportModal');
+}
+function closeReport(){ hide('reportModal'); }
+function printReport(){
+  document.body.classList.add('printing');
+  window.print();
+}
+if (window.addEventListener) window.addEventListener('afterprint', function(){ document.body.classList.remove('printing'); });
+
+/* ============ INDICADOR SIN CONEXIÓN ============ */
+function updateOnlineStatus(){
+  const pill = $('#offlinePill');
+  if (pill) pill.classList.toggle('hidden', navigator.onLine !== false);
+}
+if (window.addEventListener){
+  window.addEventListener('online', updateOnlineStatus);
+  window.addEventListener('offline', updateOnlineStatus);
+}
+
+/* ============ CONSEJOS INTELIGENTES ============ */
+function renderTips(){
+  const el = $('#tipsList');
+  if (!el) return;
+  const tips = [];
+  const km = currentMonthKey();
+  const hasData = DB.transactions.length > 0 || Object.keys(DB.budgets || {}).length > 0 || DB.goals.length > 0 || DB.debts.length > 0;
+  if (!hasData){
+    el.innerHTML = '<div class="tip-item"><span class="ti">👋</span><span>Registra tu primer ingreso o gasto con el botón <b>+</b>. Cuantos más datos tengas, mejores consejos verás aquí.</span></div>';
+    return;
+  }
+  let inc = 0, exp = 0;
+  const byCat = {};
+  DB.transactions.forEach(t => {
+    if (monthKey(t.date) !== km) return;
+    if (t.type === 'ingreso') inc += t.amount;
+    else if (t.type === 'gasto'){ exp += t.amount; byCat[t.category] = (byCat[t.category] || 0) + t.amount; }
+  });
+  if (exp > 0){
+    const top = Object.entries(byCat).sort((a, b) => b[1] - a[1])[0];
+    if (top) tips.push({ e: '🔎', h: 'Gasto principal', t: 'Este mes gastas ' + fmtM(top[1]) + ' en ' + catName(top[0]) + ', el ' + Math.round(top[1] / exp * 100) + '% de todos tus gastos.' });
+  }
+  if (inc > 0){
+    const rate = (inc - exp) / inc * 100;
+    tips.push({ e: rate >= 20 ? '💪' : '⚠️', h: 'Tasa de ahorro', t: rate >= 20
+      ? 'Ahorras el ' + Math.round(rate) + '% de tus ingresos este mes. ¡Excelente ritmo!'
+      : 'Ahorras solo el ' + Math.max(0, Math.round(rate)) + '% de tus ingresos. Revisa en qué puedes recortar.' });
+  }
+  const over = Object.entries(DB.budgets || {}).filter(([cat, lim]) => {
+    const sp = DB.transactions.reduce((s, t) => (monthKey(t.date) === km && t.type === 'gasto' && t.category === cat) ? s + t.amount : s, 0);
+    return sp > lim;
+  });
+  if (over.length) tips.push({ e: '🔥', h: 'Presupuesto excedido', t: over.length + ' categoría(s) superaron su límite: ' + over.map(([c]) => catName(c)).join(', ') + '. Bájales el ritmo o sube el límite.' });
+  const pend = DB.debts.filter(d => d.status === 'pendiente');
+  if (pend.length) tips.push({ e: '🤝', h: 'Deudas pendientes', t: 'Tienes ' + pend.length + ' deuda(s) por ' + fmtM(pend.reduce((s, d) => s + d.amount, 0)) + '. Revisa la pestaña Deudas.' });
+  const casi = DB.goals.filter(g => g.current > 0 && g.current < g.target && (g.target - g.current) / g.target <= 0.2);
+  if (casi.length) tips.push({ e: '🏁', h: 'Metas a punto', t: 'Falta poco para completar: ' + casi.map(g => g.name).join(', ') + '. ¡Sigue abonando!' });
+  if (!Object.keys(DB.budgets || {}).length) tips.push({ e: '🎯', h: 'Sin presupuestos', t: 'Define límites mensuales por categoría (Comida, Ocio...) para controlar mejor tus gastos.' });
+  if (!DB.recurring.length) tips.push({ e: '🔁', h: 'Sin recurrentes', t: 'Programa tus gastos fijos (pasaje, comida, internet...) para que las proyecciones trabajen por ti.' });
+  el.innerHTML = tips.slice(0, 4).map(t => '<div class="tip-item"><span class="ti">' + t.e + '</span><span><b>' + t.h + ':</b> ' + esc(t.t) + '</span></div>').join('');
+}
+
+/* ============ BALANCE ACUMULADO (Canvas) ============ */
+function drawCum(){
+  const canvas = $('#cumCanvas');
+  if (!canvas || canvas.offsetParent === null) return;
+  const now = new Date();
+  const months = [];
+  for (let i = 5; i >= 0; i--) months.push(new Date(now.getFullYear(), now.getMonth() - i, 1));
+  let acc = 0;
+  const series = months.map(m => {
+    const k = m.getFullYear() + '-' + String(m.getMonth() + 1).padStart(2, '0');
+    let s = 0;
+    DB.transactions.forEach(t => { if (monthKey(t.date) === k) s += signedAmount(t); });
+    acc += s;
+    return acc;
+  });
+  const labels = months.map(m => m.toLocaleDateString(locale, { month: 'short' }));
+  const maxV = niceCeil(Math.max.apply(null, [1].concat(series.map(Math.abs))));
+  const minV = Math.min(0, Math.min.apply(null, series));
+  const maxA = Math.max(maxV, Math.abs(minV));
+
+  const dpr = window.devicePixelRatio || 1;
+  const w = canvas.clientWidth, h = canvas.clientHeight;
+  canvas.width = Math.round(w * dpr);
+  canvas.height = Math.round(h * dpr);
+  const ctx = canvas.getContext('2d');
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  ctx.clearRect(0, 0, w, h);
+  const padL = 46, padR = 12, padT = 12, padB = 24;
+  const pw = w - padL - padR, ph = h - padT - padB;
+  const yOf = v => padT + ph / 2 - (v / maxA) * ph / 2 * 2 * 0.5; /* centrado con margen */
+  /* línea base más simple: escala centrada */
+  const range = 2 * maxA;
+  const yOf2 = v => padT + ph - ((v - (-maxA)) / range) * ph;
+  ctx.font = '10px system-ui';
+  ctx.textAlign = 'right';
+  ctx.textBaseline = 'middle';
+  for (let i = 0; i <= 4; i++){
+    const v = -maxA + range * i / 4;
+    const y = yOf2(v);
+    ctx.strokeStyle = v === 0 ? 'rgba(148,163,184,.5)' : 'rgba(148,163,184,.14)';
+    ctx.beginPath();
+    ctx.moveTo(padL, y);
+    ctx.lineTo(w - padR, y);
+    ctx.stroke();
+    ctx.fillStyle = '#64748b';
+    ctx.fillText('$' + fmtAxis(v), padL - 6, y);
+  }
+  if (series.length < 2) return;
+  const step = pw / (series.length - 1);
+  ctx.beginPath();
+  series.forEach((v, i) => {
+    const x = padL + i * step, y = yOf2(v);
+    if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+  });
+  ctx.strokeStyle = '#10b981';
+  ctx.lineWidth = 2;
+  ctx.stroke();
+  ctx.lineTo(padL + (series.length - 1) * step, yOf2(-maxA));
+  ctx.lineTo(padL, yOf2(-maxA));
+  ctx.closePath();
+  ctx.fillStyle = 'rgba(16,185,129,.12)';
+  ctx.fill();
+  const lx = padL + (series.length - 1) * step, ly = yOf2(series[series.length - 1]);
+  ctx.beginPath();
+  ctx.arc(lx, ly, 3, 0, Math.PI * 2);
+  ctx.fillStyle = '#10b981';
+  ctx.fill();
+  ctx.fillStyle = '#94a3b8';
+  ctx.font = '10px system-ui';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'top';
+  labels.forEach((lb, i) => ctx.fillText(lb, padL + i * step, h - padB + 4));
+}
+
+/* ============ CONVERSOR DE MONEDAS (offline) ============ */
+const DEFAULT_RATES = { USD:1, EUR:0.92, MXN:17.4, GTQ:7.75, HNL:24.6, CRC:500, COP:3900, PEN:3.72 };
+const CUR_SYMBOLS = { USD:'$', EUR:'€', MXN:'$', GTQ:'Q', HNL:'L', CRC:'₡', COP:'$', PEN:'S/' };
+function cvCodes(){ return Object.keys(DEFAULT_RATES); }
+function cvRate(code){ const r = (DB.settings.rates && DB.settings.rates[code]); return r > 0 ? r : DEFAULT_RATES[code]; }
+function fillCvSelects(){
+  const opts = cvCodes().map(c => '<option value="' + c + '">' + c + ' ' + (CUR_SYMBOLS[c] || '') + '</option>').join('');
+  $('#cvFrom').innerHTML = opts;
+  $('#cvTo').innerHTML = opts;
+  $('#cvFrom').value = cvFrom;
+  $('#cvTo').value = cvTo;
+}
+function calcCv(){
+  const amt = parseFloat($('#cvAmount').value) || 0;
+  cvFrom = $('#cvFrom').value;
+  cvTo = $('#cvTo').value;
+  const res = amt / cvRate(cvFrom) * cvRate(cvTo);
+  $('#cvResult').innerHTML =
+      '<div class="row"><span>' + cvFrom + ' (' + (CUR_SYMBOLS[cvFrom] || '') + ')</span><b>' + fmtM(amt) + '</b></div>'
+    + '<div class="row total"><span>' + cvTo + ' (' + (CUR_SYMBOLS[cvTo] || '') + ')</span><b>' + fmtM(res) + '</b></div>'
+    + '<div class="row"><span>1 ' + cvFrom + ' = ' + (cvRate(cvFrom) / cvRate(cvTo)).toFixed(4) + ' ' + cvTo + '</span><span></span></div>';
+}
+function renderCvRates(){
+  $('#cvRates').innerHTML = cvCodes().map(c =>
+    '<div class="cv-row"><label class="field-label" style="margin:0">' + c + ' (' + (CUR_SYMBOLS[c] || '') + ') por 1 USD</label><input type="number" min="0" step="0.0001" class="input" id="cvRate_' + c + '" value="' + cvRate(c) + '"></div>'
+  ).join('');
+}
+function toggleCvRates(){
+  const el = $('#cvRates');
+  const show = el.style.display !== 'block';
+  if (show) renderCvRates();
+  el.style.display = show ? 'block' : 'none';
+}
+
+/* ============ RETOS "NO GASTO" ============ */
+function chLabel(c){ return c.category === 'all' ? 'todo tipo de gasto' : catName(c.category); }
+function chProgress(c){
+  const start = new Date(c.startDate + 'T00:00:00');
+  const today = new Date(); today.setHours(0, 0, 0, 0);
+  let done = 0;
+  for (let i = 0; i < c.days; i++){
+    const day = new Date(start); day.setDate(start.getDate() + i);
+    if (day > today) break;
+    const iso = toLocalDate(day);
+    const violated = DB.transactions.some(t => t.type === 'gasto' && (c.category === 'all' || t.category === c.category) && (t.date || '').slice(0, 10) === iso);
+    if (!violated) done++;
+  }
+  return { done: done, total: c.days, pct: Math.round(done / c.days * 100), completed: done >= c.days };
+}
+function renderChallenges(){
+  const el = $('#chList');
+  if (!el) return;
+  const list = DB.challenges;
+  el.innerHTML = list.length ? list.map(c => {
+    const p = chProgress(c);
+    const badge = p.completed ? '<span class="badge badge-green">Completado 🎉</span>' : '<span class="badge badge-indigo">En curso</span>';
+    return '<div class="ch-item">'
+      + '<div class="ch-top"><div><div class="ch-name">🎯 ' + esc(c.name) + '</div>'
+      + '<div class="ch-meta">Sin gastar en: ' + chLabel(c) + ' · Inicio: ' + fmtDateOnly(c.startDate) + '</div></div>' + badge + '</div>'
+      + '<div class="bar"><div class="bar-fill ' + (p.completed ? 'green' : 'indigo') + '" style="width:' + p.pct + '%"></div></div>'
+      + '<div class="goal-meta2">' + p.done + ' de ' + p.total + ' días sin gasto (' + p.pct + '%)</div>'
+      + '<div class="budget-actions"><button type="button" class="btn btn-ghost btn-sm danger-text" onclick="deleteChallenge(\'' + c.id + '\')">🗑️ Eliminar</button></div>'
+      + '</div>';
+  }).join('') : emptyHTML('🎯', 'Crea un reto para motivarte a no gastar: elige una categoría (o todo) y cuántos días.');
+}
+function openChallengeModal(){
+  $('#chName').value = '';
+  $('#chCat').innerHTML = '<option value="all">🚫 Todo tipo de gasto</option>' + CATEGORIES.map(c => '<option value="' + c.id + '">' + c.icon + ' ' + c.name + '</option>').join('');
+  $('#chCat').value = 'all';
+  $('#chDays').value = '7';
+  show('challengeModal');
+  setTimeout(() => $('#chName').focus(), 60);
+}
+function closeChallengeModal(){ hide('challengeModal'); }
+$('#challengeForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  const cat = $('#chCat').value;
+  const name = $('#chName').value.trim() || ('Reto: sin gasto en ' + (cat === 'all' ? 'todo' : catName(cat)));
+  const days = Math.min(365, Math.max(1, parseInt($('#chDays').value, 10) || 7));
+  DB.challenges.push({ id: uid(), name: name.slice(0, 50), category: cat, days: days, startDate: toLocalDate(new Date()) });
+  if (saveDB()) { closeChallengeModal(); renderChallenges(); toast('🚀 Reto iniciado. ¡Mucho ánimo!'); }
+});
+function deleteChallenge(id){
+  const c = DB.challenges.find(x => x.id === id);
+  if (!c) return;
+  if (!confirm('¿Eliminar el reto "' + c.name + '"?')) return;
+  DB.challenges = DB.challenges.filter(x => x.id !== id);
+  if (saveDB()) { renderChallenges(); toast('🗑️ Reto eliminado'); }
+}
+
+/* ============ TEMA CLARO / OSCURO ============ */
+function applyTheme(t){
+  if (t === 'light' || t === 'dark') DB.settings.theme = t;
+  const el = document.documentElement;
+  if (el && el.setAttribute) el.setAttribute('data-theme', DB.settings.theme || 'dark');
+}
+function setTheme(t){
+  applyTheme(t);
+  saveDB();
+  renderThemePills();
+  toast(t === 'light' ? '☀️ Modo claro activado' : '🌙 Modo oscuro activado');
+}
+function renderThemePills(){
+  const cur = DB.settings.theme || 'dark';
+  const el = $('#themePills');
+  if (!el) return;
+  el.innerHTML = '<button type="button" class="' + (cur === 'dark' ? 'active' : '') + '" onclick="setTheme(\'dark\')">🌙 Oscuro</button>'
+    + '<button type="button" class="' + (cur === 'light' ? 'active' : '') + '" onclick="setTheme(\'light\')">☀️ Claro</button>';
+}
+
+/* ============ GUÍA INTERACTIVA ============ */
+const GUIDE_STEPS = [
+  { e: '🏠', t: 'Inicio y resumen', d: 'Aquí ves tu balance, ingresos, gastos y proyección. Cambia el período con los chips Hoy · Semana · Mes · Año · Todo.', go: 'dashboard', goLabel: 'Ir al inicio' },
+  { e: '➕', t: 'Registro rápido', d: 'El botón flotante + te permite registrar un ingreso o gasto desde cualquier pestaña en segundos.' },
+  { e: '💳', t: 'Movimientos', d: 'Filtra, busca, edita o elimina movimientos. Usa plantillas para registrar con 1 toque y programa gastos recurrentes.', go: 'movimientos', goLabel: 'Ver movimientos' },
+  { e: '📅', t: 'Calendario', d: 'En Movimientos hay un calendario mensual: toca un día para ver sus movimientos y el neto de ese día.' },
+  { e: '🎯', t: 'Presupuestos, Metas y Retos', d: 'Define límites mensuales por categoría (verde/ámbar/rojo), crea metas de ahorro con abonos y ponte retos "No gasto".', go: 'presupuestos', goLabel: 'Ver presupuestos' },
+  { e: '🤝', t: 'Deudas y préstamos', d: 'Registra a quién debes y quién te debe. "Saldar" convierte la deuda en un movimiento real.', go: 'deudas', goLabel: 'Ver deudas' },
+  { e: '📊', t: 'Analítica', d: 'Gráficos en Canvas: dona por categorías, barras de 6 meses, resumen mensual y balance acumulado.', go: 'analitica', goLabel: 'Ver analítica' },
+  { e: '⚙️', t: 'Herramientas', d: 'PIN, copias de seguridad, reporte PDF, calculadora de propinas, simulador de ahorro, conversor de monedas, tema claro/oscuro y este tutorial.', go: 'herramientas', goLabel: 'Ver herramientas' },
+  { e: '🎉', t: '¡Listo!', d: 'Explora con libertad. Tus datos se guardan SOLO en tu dispositivo (localStorage) y la app funciona sin internet.' }
+];
+function renderGuide(){
+  const s = GUIDE_STEPS[guideStep];
+  $('#guideEmoji').textContent = s.e;
+  $('#guideText').innerHTML = '<p><b>' + esc(s.t) + '</b></p><p>' + esc(s.d) + '</p>';
+  $('#guideGo').innerHTML = s.go ? '<button type="button" class="btn btn-indigo btn-sm" onclick="guideGoTo(\'' + s.go + '\')">' + esc(s.goLabel || 'Ir') + ' →</button>' : '';
+  $('#guidePrev').disabled = guideStep === 0;
+  $('#guideNext').textContent = guideStep === GUIDE_STEPS.length - 1 ? '¡Entendido!' : 'Siguiente ▶';
+  $('#guideDots').innerHTML = GUIDE_STEPS.map((_, i) => '<span class="guide-dot' + (i === guideStep ? ' active' : '') + '"></span>').join('');
+}
+function openGuide(i){ guideStep = (i != null && i >= 0 && i < GUIDE_STEPS.length) ? i : 0; renderGuide(); show('guideModal'); }
+function closeGuide(){ hide('guideModal'); }
+function guideNav(d){
+  guideStep += d;
+  if (guideStep >= GUIDE_STEPS.length){ closeGuide(); return; }
+  if (guideStep < 0) guideStep = 0;
+  renderGuide();
+}
+function guideGoTo(v){ closeGuide(); go(v); }
+function welcomeGuide(){ hide('welcomeScreen'); openGuide(0); }
 
 /* ============ DATOS DE EJEMPLO ============ */
 function loadDemo(){
@@ -2236,6 +3166,14 @@ function loadDemo(){
     { id: uid(), type: 'gasto', amount: 35,  category: 'servicios',  note: 'Internet',               freq: 'mensual',  weekday: 1, dayOfMonth: 5, monthOfYear: 0, startDate: startMes, anchor: startMes },
     { id: uid(), type: 'ingreso', amount: 30, category: 'otros',     note: 'Ayuda de casa',          freq: 'semanal',  weekday: 6, dayOfMonth: 1, monthOfYear: 0, startDate: startMes, anchor: startMes }
   ];
+  DB.templates = [
+    { id: uid(), name: 'Almuerzo',      type: 'gasto',   amount: 4.5,  category: 'comida',     note: 'Almuerzo rápido' },
+    { id: uid(), name: 'Pasaje de bus', type: 'gasto',   amount: 1,    category: 'transporte', note: '' },
+    { id: uid(), name: 'Sueldo',        type: 'ingreso', amount: 1200, category: 'sueldo',     note: 'Sueldo mensual' }
+  ];
+  DB.challenges = [
+    { id: uid(), name: 'Reto: semana sin ocio', category: 'ocio', days: 7, startDate: toLocalDate(new Date()) }
+  ];
   if (saveDB()) { renderAll(); toast('🧪 Datos de ejemplo cargados'); }
 }
 
@@ -2254,13 +3192,14 @@ function fillCatSelects(){
   const opts = CATEGORIES.map(c => '<option value="' + c.id + '">' + c.icon + ' ' + c.name + '</option>').join('');
   $('#txCat').innerHTML = opts;
   $('#recCat').innerHTML = opts;
+  $('#tplCat').innerHTML = opts;
   $('#fCat').innerHTML = '<option value="all">🗂️ Todas las categorías</option>' + opts;
   $('#fType').innerHTML = '<option value="all">Todos los tipos</option>' + TYPE_META.map(t => '<option value="' + t.id + '">' + t.icon + ' ' + t.name + '</option>').join('');
 }
 function closeAllModals(){
-  ['txModal','budgetModal','goalModal','abonoModal','debtModal','pinModal','recModal'].forEach(hide);
+  ['txModal','budgetModal','goalModal','abonoModal','debtModal','pinModal','recModal','templateModal','reportModal','challengeModal','guideModal'].forEach(hide);
   editingTxId = null; editingBudgetCat = null; editingGoalId = null; editingDebtId = null;
-  abonoGoalId = null; pinState = null; pinDigits = ''; editingRecId = null;
+  abonoGoalId = null; pinState = null; pinDigits = ''; editingRecId = null; editingTemplateId = null;
 }
 function init(){
   try {
@@ -2276,6 +3215,30 @@ function init(){
   renderPeriodChips();
 
   $('#recFreq').addEventListener('change', recFreqChanged);
+  applyTheme(DB.settings.theme || 'dark');
+  fillCvSelects();
+  calcCv();
+  $('#cvAmount').addEventListener('input', calcCv);
+  $('#cvFrom').addEventListener('change', calcCv);
+  $('#cvTo').addEventListener('change', calcCv);
+  $('#cvRates').addEventListener('input', function(e){
+    const inp = e.target;
+    if (inp && inp.id && inp.id.indexOf('cvRate_') === 0){
+      const code = inp.id.slice(7);
+      const v = parseFloat(inp.value);
+      if (v > 0 && DEFAULT_RATES[code]){ DB.settings.rates = DB.settings.rates || {}; DB.settings.rates[code] = v; saveDB(); calcCv(); }
+    }
+  });
+  buildTplTypeGrid();
+  renderCalendar();
+  buildTipPills();
+  calcTip();
+  simInterest();
+  updateOnlineStatus();
+  ['#tipTotal','#tipPeople','#simInitial','#simMonthly','#simRate','#simMonths'].forEach(function(sel){
+    $(sel).addEventListener('input', function(){ if (sel.indexOf('tip') === 1) calcTip(); else simInterest(); });
+  });
+  $('#tipRound').addEventListener('change', calcTip);
 
   ['fSearch','fType','fCat','fRange','fSort'].forEach(id => {
     const el = $('#' + id);
@@ -2364,6 +3327,5 @@ if ('serviceWorker' in navigator) {
 }
 document.addEventListener('DOMContentLoaded', init);
 </script>
-<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a29137a8b91992fc',t:'MTc4NjM4ODE1Mw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon='{"version":"2024.11.0","token":"1954b47c125f43f8b4338b3c4f804e4f"}' crossorigin="anonymous"></script>
-</body>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a2d514a7bcd4335b',t:'MTc4NzA5OTc1MQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
